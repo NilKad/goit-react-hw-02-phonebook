@@ -1,4 +1,5 @@
 import css from './Filter.module.css';
+import PropTypes from 'prop-types';
 
 export const Filter = ({ onInputHandle, filterValue, clearFilter }) => {
   const onKeyDown = e => {
@@ -15,4 +16,10 @@ export const Filter = ({ onInputHandle, filterValue, clearFilter }) => {
       value={filterValue}
     />
   );
+};
+
+Filter.propTypes = {
+  onInputHandle: PropTypes.func.isRequired,
+  clearFilter: PropTypes.func.isRequired,
+  filterValue: PropTypes.string.isRequired,
 };

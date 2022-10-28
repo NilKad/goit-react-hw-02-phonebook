@@ -1,5 +1,5 @@
 import css from './ContactList.module.css';
-import React from 'react';
+import PropTypes from 'prop-types';
 
 export const ContactList = ({ contactList, filterEl, onDeletePhonebookID }) => {
   return (
@@ -25,4 +25,16 @@ export const ContactList = ({ contactList, filterEl, onDeletePhonebookID }) => {
         })}
     </ul>
   );
+};
+
+ContactList.propTypes = {
+  contactList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  filterEl: PropTypes.string.isRequired,
+  onDeletePhonebookID: PropTypes.func.isRequired,
 };
