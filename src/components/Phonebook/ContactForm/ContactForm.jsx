@@ -18,12 +18,12 @@ class ContactForm extends React.Component {
     const { onAddPhonebook } = this.props;
     e.preventDefault();
 
-    onAddPhonebook({
+    const isWrite = onAddPhonebook({
       id: nanoid(7),
       name: this.state.name,
       number: this.state.number,
     });
-    this.setState({ name: '', number: '' });
+    isWrite && this.setState({ name: '', number: '' });
   };
 
   render() {

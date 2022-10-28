@@ -16,9 +16,14 @@ class Phonebook extends React.Component {
   };
 
   addToPhonebook = ({ id, name, number }) => {
+    if (this.state.contacts.find(el => el.name === name)) {
+      alert(`${name} is arledy is contacts`);
+      return false;
+    }
     this.setState(PrevState => {
       return { contacts: [...PrevState.contacts, { id, name, number }] };
     });
+    return true;
   };
 
   onInputHandle = e => {
