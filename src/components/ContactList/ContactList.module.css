@@ -1,9 +1,12 @@
+.transGroup {
+}
 .contactsList {
   font-size: 18px;
 }
 
 .item {
   margin-bottom: 10px;
+  transition: all 500ms linear;
 }
 .button {
   margin-left: 20px;
