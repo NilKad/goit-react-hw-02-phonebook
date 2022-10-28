@@ -26,6 +26,8 @@ class Phonebook extends React.Component {
     this.setState({ [name]: value });
   };
 
+  clearFilter = () => this.setState({ filter: '' });
+
   deletePhonebookID = id => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(el => el.id !== id),
@@ -41,6 +43,7 @@ class Phonebook extends React.Component {
         <Filter
           onInputHandle={this.onInputHandle}
           filterValue={this.state.filter}
+          clearFilter={this.clearFilter}
         />
         <ContactList
           onDeletePhonebookID={this.deletePhonebookID}

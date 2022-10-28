@@ -1,10 +1,15 @@
-export const Filter = ({ onInputHandle, filterValue }) => {
+export const Filter = ({ onInputHandle, filterValue, clearFilter }) => {
+  const onKeyDown = e => {
+    e.key === 'Escape' && clearFilter();
+  };
+
   return (
     <input
       type="text"
       name="filter"
       onInput={onInputHandle}
-      value={filterValue.value}
+      onKeyDown={onKeyDown}
+      value={filterValue}
     />
   );
 };
