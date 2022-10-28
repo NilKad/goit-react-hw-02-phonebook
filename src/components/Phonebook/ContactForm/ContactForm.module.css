@@ -38,3 +38,10 @@
   border-radius: 4px;
   /* display: inline-flex; */
 }
+
+.submitBtn:hover {
+  background-color: rgb(221, 221, 221);
+}
+.submitBtn:active {
+  background-color: deepskyblue;
+}
