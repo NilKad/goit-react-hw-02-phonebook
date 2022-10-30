@@ -2,7 +2,7 @@ import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
 import { ContactListItem } from './ContactListItem';
 
-export const ContactList = ({ contactList, filterEl, onDeletePhonebookID }) => {
+export const ContactList = ({ contactList, onDeletePhonebookID }) => {
   // console.log
   return (
     <ul className={css.contactsList}>
@@ -35,6 +35,5 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  filterEl: PropTypes.string.isRequired,
   onDeletePhonebookID: PropTypes.func.isRequired,
 };
