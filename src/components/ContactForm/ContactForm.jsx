@@ -2,9 +2,13 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
-import css from 'components/Phonebook/ContactForm/ContactForm.module.css';
+import css from 'components/ContactForm/ContactForm.module.css';
 
 class ContactForm extends React.Component {
+  static PrpoTypes = {
+    onAddPhonebook: PropTypes.func.isRequired,
+  };
+
   state = {
     name: '',
     number: '',
@@ -16,10 +20,9 @@ class ContactForm extends React.Component {
   };
 
   onSubmitPhonebook = e => {
-    const { onAddPhonebook } = this.props;
     e.preventDefault();
 
-    const isWrite = onAddPhonebook({
+    const isWrite = this.props.onAddPhonebook({
       id: nanoid(7),
       name: this.state.name,
       number: this.state.number,
@@ -67,7 +70,3 @@ class ContactForm extends React.Component {
 }
 
 export default ContactForm;
-
-ContactForm.propTypes = {
-  onAddPhonebook: PropTypes.func.isRequired,
-};

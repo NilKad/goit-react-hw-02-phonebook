@@ -1,6 +1,6 @@
 import React from 'react';
 // import css from './Phonebook.module.css';
-import ContactForm from './ContactForm/ContactForm';
+import ContactForm from '../ContactForm/ContactForm';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 
@@ -24,6 +24,14 @@ class Phonebook extends React.Component {
       return { contacts: [...PrevState.contacts, { id, name, number }] };
     });
     return true;
+  };
+
+  filteredContactList = () => {
+    // console.log('this.state: ', this.state);
+    return this.state.contacts.filter(f => {
+      const filter = this.state.filter.toLowerCase();
+      return f.name.toLowerCase().includes(filter);
+    });
   };
 
   onInputHandle = e => {
@@ -52,7 +60,7 @@ class Phonebook extends React.Component {
         />
         <ContactList
           onDeletePhonebookID={this.deletePhonebookID}
-          contactList={this.state.contacts}
+          contactList={this.filteredContactList()}
           filterEl={this.state.filter}
         />
       </div>

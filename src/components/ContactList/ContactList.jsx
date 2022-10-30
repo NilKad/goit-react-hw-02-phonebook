@@ -1,28 +1,28 @@
 import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
+import { ContactListItem } from './ContactListItem';
 
 export const ContactList = ({ contactList, filterEl, onDeletePhonebookID }) => {
+  // console.log
   return (
     <ul className={css.contactsList}>
-      {contactList
-        .filter(f => {
-          const filter = filterEl.toLowerCase();
-          return f.name.toLowerCase().includes(filter);
-        })
-        .map(el => {
-          return (
-            <li key={el.id} className={css.item}>
-              {el.name}: {el.number}
-              <button
-                type="button"
-                className={css.button}
-                onClick={() => onDeletePhonebookID(el.id)}
-              >
-                Delete
-              </button>
-            </li>
-          );
-        })}
+      {contactList.map(el => {
+        return (
+          <ContactListItem
+            key={el.id}
+            element={el}
+            onDeletePhonebookID={onDeletePhonebookID}
+          >
+            <button
+              type="button"
+              className={css.button}
+              onClick={() => onDeletePhonebookID(el.id)}
+            >
+              Delete
+            </button>
+          </ContactListItem>
+        );
+      })}
     </ul>
   );
 };
